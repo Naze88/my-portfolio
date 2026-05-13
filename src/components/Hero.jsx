@@ -3,7 +3,7 @@ import Typed from "typed.js"
 import profilePic from "../assets/Nyan Tun Zaw Profile.jpg"
 
 const heroRoles = [
-  "ICT Student at Rangsit University",
+  "ICT Major at Rangsit University(RSU)",
   "React and Vite Frontend Developer",
   "Dashboard Designer and Figma Enthusiast",
 ]
@@ -11,7 +11,7 @@ const heroRoles = [
 const heroHighlights = [
   ["React + Vite", "Frontend stack"],
   ["Figma", "UI workflow"],
-  ["RSU", "ICT student"],
+  ["RSU", "ICT Major"],
 ]
 
 export default function Hero() {
