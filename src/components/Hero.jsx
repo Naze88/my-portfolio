@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import Typed from "typed.js"
-import profilePic from "../assets/Nyan Tun Zaw Profile.png"
+import profilePic from "../assets/Nyan Tun Zaw Profile.jpg"
 
 export default function Hero() {
   const typedElement = useRef(null)
@@ -81,12 +81,13 @@ export default function Hero() {
       </div>
 
       <div className="motion-in motion-delay-2 flex justify-center md:justify-end">
-        <div className="relative w-full max-w-sm">
+        <div className="relative w-full max-w-[300px]">
           <div className="absolute -inset-1 rounded-md bg-gradient-to-br from-[#f7c873] via-blue-400 to-green-400 opacity-80 blur-sm" />
           <div className="glass-panel relative rounded-md p-3">
             <img
               src={profilePic}
               alt="Nyan Tun Zaw"
+              style={{ width: "300px", height: "auto", imageRendering: "pixelated" }}
               className="aspect-[4/5] w-full rounded-md object-cover"
             />
             <div className="absolute bottom-6 left-6 right-6 rounded-md border border-white/10 bg-[#050505]/82 p-4 backdrop-blur">
