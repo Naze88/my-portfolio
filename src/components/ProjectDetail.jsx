@@ -6,6 +6,7 @@ const projectDetails = {
     description:
       "Dashboard concepts for tracking RSU PAL Center activity, designed around readable reporting and quick status checks.",
     stack: ["React", "Charts", "Responsive UI"],
+    liveUrl: "http://127.0.0.1:8000/admin/database-analytics",
   },
   "portfolio-website": {
     title: "Portfolio Website",
@@ -47,16 +48,28 @@ export default function ProjectDetail() {
               "This project does not exist yet. Return home to choose one of the available projects."}
           </p>
           {project ? (
-            <div className="mt-8 flex flex-wrap gap-2">
-              {project.stack.map((item) => (
-                <span
-                  key={item}
-                  className="rounded border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-sm font-semibold text-amber-200"
+            <>
+              <div className="mt-8 flex flex-wrap gap-2">
+                {project.stack.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-sm font-semibold text-amber-200"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+              {project.liveUrl ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shine-button elegant-button mt-8 inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
                 >
-                  {item}
-                </span>
-              ))}
-            </div>
+                  View Web
+                </a>
+              ) : null}
+            </>
           ) : null}
         </div>
       </div>

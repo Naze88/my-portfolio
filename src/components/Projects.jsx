@@ -8,6 +8,7 @@ const projects = [
     tags: ["Dashboard", "Data", "UI Design"],
     preview: "from-blue-400/35 via-gray-900 to-black",
     bar: "bg-blue-400",
+    liveUrl: "http://127.0.0.1:8000/admin/database-analytics",
   },
   {
     id: "portfolio-website",
@@ -83,12 +84,24 @@ export default function Projects() {
                 </span>
               ))}
             </div>
-            <Link
-              to={`/project/${project.id}`}
-              className="shine-button elegant-button mt-6 inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f7c873]"
-            >
-              View Project
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                to={`/project/${project.id}`}
+                className="shine-button elegant-button inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f7c873]"
+              >
+                View Project
+              </Link>
+              {project.liveUrl ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shine-button outline-button inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+                >
+                  View Web
+                </a>
+              ) : null}
+            </div>
           </article>
         ))}
       </div>
