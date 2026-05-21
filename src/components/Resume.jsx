@@ -101,14 +101,15 @@ export default function Resume() {
           UI/UX Design, Travel, Swimming, Martial Arts, Badminton, Analysis
         </p>
         <div className="mt-10">
-         <a
-          href={MyCV}
-          target="_blank"
-          rel="noreferrer"
-          className="shine-button elegant-button w-fit rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-1 focus-visible:outline-[#f7c873]"
-        >
-          Check In Resume
-        </a>
+        <a
+  href={MyCV}
+  target="_blank"
+  rel="noreferrer"
+   className="shine-button elegant-button mt-8 inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+>
+  Check In Resume
+</a>
+
         </div>
       </div>
     </section>
