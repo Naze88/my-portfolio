@@ -19,6 +19,16 @@ const projects = [
     bar: "bg-[#f7c873]",
   },
   {
+    id: "leo-corgi-hoouse-web",
+    title: "Leo Corgi Hoouse Web",
+    summary:
+      "A friendly web experience for Leo Corgi Hoouse with clear sections, warm visuals, and easy browsing.",
+    tags: ["Website", "React", "Vercel"],
+    preview: "from-orange-400/35 via-gray-900 to-black",
+    bar: "bg-orange-400",
+    liveUrl: "https://leo-web-jet.vercel.app",
+  },
+  {
     id: "tommy-runner",
     title: "TommyRunner",
     summary: "A Unity game design project focused on simple, readable gameplay.",

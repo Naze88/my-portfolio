@@ -14,6 +14,13 @@ const projectDetails = {
       "A personal portfolio built with React, Vite, and Tailwind CSS to present profile information, projects, and resume details.",
     stack: ["React", "Vite", "Tailwind CSS"],
   },
+  "leo-corgi-hoouse-web": {
+    title: "Leo Corgi Hoouse Web",
+    description:
+      "A polished web project for Leo Corgi Hoouse, focused on presenting the brand with friendly visuals, simple navigation, and responsive pages that work smoothly across devices.",
+    stack: ["React", "Responsive Web", "Vercel"],
+    liveUrl: "https://leo-web-jet.vercel.app",
+  },
   "tommy-runner": {
     title: "TommyRunner",
     description:
