@@ -99,6 +99,14 @@ export default function Resume() {
         <p className="mt-4 text-slate-300">
           UI/UX Design, Travel, Swimming, Martial Arts, Badminton, Analysis
         </p>
+         <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shine-button outline-button inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+                >
+                  View Web
+                </a>
       </div>
     </section>
   )
