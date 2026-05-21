@@ -105,7 +105,7 @@ export default function Resume() {
           href={MyCV}
           target="_blank"
           rel="noreferrer"
-          className="shine-button outline-button inline-flex rounded-md px-4 py-2 text"
+          className="shine-button elegant-button w-fit rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f7c873]"
         >
           Check In Resume
         </a>
