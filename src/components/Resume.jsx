@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import MyCV from "../assets/CV IT (Naze) (1).pdf";
+import MyCV from "../assets/CV form (NTZ).pdf";
 
 export default function Resume() {
   return (
