@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="animated-shell min-h-screen text-slate-100">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/75 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#030712]/72 backdrop-blur-2xl">
         <nav className="mx-auto max-w-6xl px-5 py-4">
           <div className="flex items-center justify-between">
             <a
@@ -24,7 +24,7 @@ export default function Home() {
               className="group flex items-center gap-3 text-base font-bold text-white"
               onClick={() => setMenuOpen(false)}
             >
-              <span className="elegant-button grid size-9 place-items-center rounded-md text-sm font-black">
+              <span className="elegant-button grid size-10 place-items-center rounded-md text-sm font-black shadow-lg shadow-sky-500/10">
                 NZ
               </span>
               <span>
@@ -39,7 +39,7 @@ export default function Home() {
               {navItems.map((item) => (
                 <a
                   key={item.href}
-                  className="rounded-md px-3 py-2 transition hover:bg-white/10 hover:text-[#f7c873]"
+                  className="rounded-md px-3 py-2 transition hover:bg-white/10 hover:text-yellow-200"
                   href={item.href}
                 >
                   {item.label}
@@ -94,13 +94,13 @@ export default function Home() {
 
       <main>
         <Hero />
-        <section id="about" className="mx-auto max-w-6xl px-5 py-20">
+        <section id="about" className="section-shell mx-auto max-w-6xl px-5 py-20">
           <About />
         </section>
-        <section id="projects" className="mx-auto max-w-6xl px-5 py-20">
+        <section id="projects" className="section-shell mx-auto max-w-6xl px-5 py-20">
           <Projects />
         </section>
-        <section id="contact" className="mx-auto max-w-6xl px-5 py-20">
+        <section id="contact" className="section-shell mx-auto max-w-6xl px-5 py-20">
           <Contact />
         </section>
       </main>

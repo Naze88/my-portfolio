@@ -43,7 +43,7 @@ export default function Projects() {
     <div className="motion-in">
       <div className="mb-8 flex flex-col justify-between gap-4 text-left sm:flex-row sm:items-end">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#f7c873]">
+          <p className="eyebrow text-sm font-semibold uppercase tracking-[0.25em]">
             Work
           </p>
           <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl">
@@ -58,19 +58,20 @@ export default function Projects() {
         </Link>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {projects.map((project) => (
           <article
             key={project.id}
-            className="project-card glass-panel group rounded-md p-5 text-left transition hover:-translate-y-1 hover:border-[#f7c873]/50"
+            className="project-card glass-panel premium-frame group rounded-md p-5 text-left transition hover:-translate-y-1 hover:border-sky-200/45"
           >
             <div
-              className={`preview-grid mb-5 aspect-[16/10] rounded-md bg-gradient-to-br ${project.preview} p-4`}
+              className={`preview-grid relative mb-5 aspect-[16/10] overflow-hidden rounded-md bg-gradient-to-br ${project.preview} p-4`}
             >
-              <div className="flex h-full flex-col justify-between rounded-md border border-white/10 bg-black/55 p-3">
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="relative flex h-full flex-col justify-between rounded-md border border-white/10 bg-black/50 p-3 shadow-xl shadow-black/20">
                 <div className="flex gap-1.5">
                   <span className="size-2 rounded-full bg-red-500" />
-                  <span className="size-2 rounded-full bg-[#f7c873]" />
+                  <span className="size-2 rounded-full bg-yellow-300" />
                   <span className="size-2 rounded-full bg-green-400" />
                 </div>
                 <div className="space-y-2">
@@ -97,7 +98,7 @@ export default function Projects() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 to={`/project/${project.id}`}
-                className="shine-button elegant-button inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f7c873]"
+                className="shine-button elegant-button inline-flex rounded-md px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-200"
               >
                 View Project
               </Link>
