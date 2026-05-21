@@ -10,7 +10,7 @@ export default function About() {
         </h2>
         <div className="mt-6 grid gap-3 text-sm font-semibold text-slate-300">
           <span className="rounded-md border border-blue-400/20 bg-blue-500/10 px-4 py-3 text-blue-100">
-            React + Vite interfaces
+            React + Vite interfaces / javaScript programming / Laravel / HTML / php / MySQL / Tailwind CSS / Figma design / UI/UX design...
           </span>
           <span className="rounded-md border border-[#f7c873]/20 bg-[#f7c873]/10 px-4 py-3 text-[#fff7d6]">
             Dashboard and data layouts
