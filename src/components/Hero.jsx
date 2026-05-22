@@ -7,7 +7,11 @@ const heroRoles = [
   "React and Vite Frontend Developer",
   "Dashboard Designer and Figma Enthusiast",
 ]
-
+const heroLogics = [
+  "Walk to the future. Don't stop, Just need to keep walking , Slow or Fast Either",
+  "Ever smile. Never Cry",
+  "Look back to get the experiences",
+]
 const heroHighlights = [
   ["React + Vite", "Frontend stack"],
   ["Figma", "UI workflow"],
@@ -15,24 +19,36 @@ const heroHighlights = [
 ]
 
 export default function Hero() {
-  const typedElement = useRef(null)
+  const typedRolesRef = useRef(null)
+  const typedLogicsRef = useRef(null)
+
+   useEffect(() => {
+    // Roles
+    if (typedRolesRef.current) {
+      const typedRoles = new Typed(typedRolesRef.current, {
+        strings: heroRoles,
+        typeSpeed: 45,
+        backSpeed: 25,
+        backDelay: 1800,
+        cursorChar: "|",
+        loop: true,
+      })
+      return () => typedRoles.destroy()
+    }
+  }, [])
 
   useEffect(() => {
-    if (!typedElement.current) {
-      return undefined
-    }
-
-    const typed = new Typed(typedElement.current, {
-      strings: heroRoles,
-      typeSpeed: 45,
-      backSpeed: 25,
-      backDelay: 1200,
-      cursorChar: "|",
-      loop: true,
-    })
-
-    return () => {
-      typed.destroy()
+    // Logics
+    if (typedLogicsRef.current) {
+      const typedLogics = new Typed(typedLogicsRef.current, {
+        strings: heroLogics,
+        typeSpeed: 45,
+        backSpeed: 25,
+        backDelay: 2000,
+        cursorChar: "✦",
+        loop: true,
+      })
+      return () => typedLogics.destroy()
     }
   }, [])
 
@@ -51,7 +67,7 @@ export default function Hero() {
           <span className="luxury-text">polished web interfaces.</span>
         </h1>
         <p className="mt-5 min-h-8 text-xl font-semibold text-yellow-200 sm:text-2xl">
-          <span ref={typedElement} />
+          <span ref={typedRolesRef} />
         </p>
         <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
           I turn ideas into responsive websites, dashboard layouts, and
@@ -88,6 +104,9 @@ export default function Hero() {
             </div>
           ))}
         </dl>
+        <p className="mt-5 min-h-8 text-xl font-semibold text-yellow-200 sm:text-2xl">
+          <span ref={typedLogicsRef} />
+        </p>
       </div>
 
       <div className="motion-in motion-delay-2 flex justify-center md:justify-end">
