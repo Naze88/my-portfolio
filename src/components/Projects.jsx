@@ -8,6 +8,7 @@ const projects = [
     tags: ["Dashboard", "Data", "UI Design"],
     preview: "from-blue-400/35 via-gray-900 to-black",
     bar: "bg-blue-400",
+    liveUrl: "http://127.0.0.1:8000/admin/database-analytics",
   },
   {
     id: "portfolio-website",

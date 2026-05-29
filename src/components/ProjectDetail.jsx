@@ -6,6 +6,7 @@ const projectDetails = {
     description:
       "Dashboard concepts for tracking RSU PAL Center activity, designed around readable reporting and quick status checks.",
     stack: ["React", "Charts", "Responsive UI"],
+    liveUrl: "http://127.0.0.1:8000/admin/database-analytics",
   },
   "portfolio-website": {
     title: "Portfolio Website",
