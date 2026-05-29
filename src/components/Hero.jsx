@@ -18,24 +18,97 @@ const heroHighlights = [
   ["RSU", "ICT Major"],
 ]
 
-let pageViewRegistered = false
+const VIEW_COUNTER_STORAGE_KEY = "portfolioViewCount"
+const VIEW_COUNTER_ENDPOINT =
+  "https://api.counterapi.dev/v1/nyan-tun-zaw-portfolio/portfolio-views"
+
+let pageViewRequest = null
+
+function readCachedViewCount() {
+  try {
+    const cachedViews = window.localStorage.getItem(VIEW_COUNTER_STORAGE_KEY)
+    const cachedCount = Number(cachedViews)
+
+    return Number.isFinite(cachedCount) && cachedCount > 0 ? cachedCount : null
+  } catch {
+    return null
+  }
+}
+
+function cacheViewCount(count) {
+  try {
+    window.localStorage.setItem(VIEW_COUNTER_STORAGE_KEY, String(count))
+  } catch {
+    // The shared API remains the source of truth if browser storage is blocked.
+  }
+}
+
+function getCounterValue(payload) {
+  const value =
+    payload?.Count ??
+    payload?.count ??
+    payload?.value ??
+    payload?.data?.up_count ??
+    payload?.data?.count ??
+    payload?.data?.value
+
+  return Number.isFinite(Number(value)) ? Number(value) : null
+}
+
+async function fetchCounter(path) {
+  const response = await fetch(`${VIEW_COUNTER_ENDPOINT}${path}`, {
+    cache: "no-store",
+  })
+
+  if (!response.ok) {
+    throw new Error("Unable to load portfolio view count")
+  }
+
+  const payload = await response.json()
+  const count = getCounterValue(payload)
+
+  if (count === null) {
+    throw new Error("Portfolio view count response was invalid")
+  }
+
+  return count
+}
+
+async function registerPortfolioView() {
+  try {
+    return await fetchCounter("/up")
+  } catch {
+    return fetchCounter("")
+  }
+}
 
 export default function Hero() {
   const typedRolesRef = useRef(null)
   const typedLogicsRef = useRef(null)
-  const [viewCount, setViewCount] = useState(0)
+  const [viewCount, setViewCount] = useState(readCachedViewCount)
 
   useEffect(() => {
-    if (pageViewRegistered) return
-    pageViewRegistered = true
+    let isMounted = true
 
-    const currentViews = Number.parseInt(
-      window.localStorage.getItem("portfolioViewCount") ?? "0",
-      10,
-    )
-    const nextViews = Number.isNaN(currentViews) ? 1 : currentViews + 1
-    window.localStorage.setItem("portfolioViewCount", String(nextViews))
-    setViewCount(nextViews)
+    pageViewRequest ??= registerPortfolioView()
+
+    pageViewRequest
+      .then((count) => {
+        cacheViewCount(count)
+
+        if (isMounted) {
+          setViewCount(count)
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setViewCount(null)
+        }
+      })
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   useEffect(() => {
@@ -61,7 +134,7 @@ export default function Hero() {
         typeSpeed: 45,
         backSpeed: 25,
         backDelay: 2000,
-        cursorChar: "✦",
+        cursorChar: "*",
         loop: true,
       })
       return () => typedLogics.destroy()
@@ -84,8 +157,11 @@ export default function Hero() {
               <span className="size-3 rounded-full border-2 border-current shadow-[0_0_12px_rgba(125,211,252,0.45)]" />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="text-lg font-black text-white">
-                {viewCount.toLocaleString()}
+              <span
+                aria-live="polite"
+                className="inline-block min-w-[4ch] text-right text-lg font-black tabular-nums text-white"
+              >
+                {viewCount === null ? "..." : viewCount.toLocaleString()}
               </span>
               <span className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-slate-400">
                 Portfolio views
