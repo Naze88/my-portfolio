@@ -79,9 +79,19 @@ export default function Hero() {
             <span className="size-2 rounded-full bg-green-400 shadow-[0_0_16px_rgba(74,222,128,0.9)]" />
             Available for web and UI projects
           </div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-            {viewCount.toLocaleString()} portfolio views
-          </p>
+          <div className="inline-flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.06] px-3 py-2 shadow-lg shadow-black/10 backdrop-blur">
+            <span className="grid size-8 place-items-center rounded-md border border-sky-200/20 bg-sky-300/10 text-sky-100">
+              <span className="size-3 rounded-full border-2 border-current shadow-[0_0_12px_rgba(125,211,252,0.45)]" />
+            </span>
+            <span className="flex flex-col leading-none">
+              <span className="text-lg font-black text-white">
+                {viewCount.toLocaleString()}
+              </span>
+              <span className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-slate-400">
+                Portfolio views
+              </span>
+            </span>
+          </div>
         </div>
         <h1 className="max-w-3xl text-4xl font-black leading-tight text-white drop-shadow-2xl sm:text-5xl lg:text-6xl">
           Hi, I&apos;m Nyan Tun Zaw. I build{" "}
