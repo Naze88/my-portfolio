@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Typed from "typed.js"
 import profilePic from "../assets/Nyan Tun Zaw Profile.jpg"
 
@@ -18,11 +18,27 @@ const heroHighlights = [
   ["RSU", "ICT Major"],
 ]
 
+let pageViewRegistered = false
+
 export default function Hero() {
   const typedRolesRef = useRef(null)
   const typedLogicsRef = useRef(null)
+  const [viewCount, setViewCount] = useState(0)
 
-   useEffect(() => {
+  useEffect(() => {
+    if (pageViewRegistered) return
+    pageViewRegistered = true
+
+    const currentViews = Number.parseInt(
+      window.localStorage.getItem("portfolioViewCount") ?? "0",
+      10,
+    )
+    const nextViews = Number.isNaN(currentViews) ? 1 : currentViews + 1
+    window.localStorage.setItem("portfolioViewCount", String(nextViews))
+    setViewCount(nextViews)
+  }, [])
+
+  useEffect(() => {
     // Roles
     if (typedRolesRef.current) {
       const typedRoles = new Typed(typedRolesRef.current, {
@@ -58,9 +74,14 @@ export default function Hero() {
       className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-12 px-5 py-14 sm:py-20 md:grid-cols-[1.08fr_0.92fr]"
     >
       <div className="motion-in text-left">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-md border border-sky-300/25 bg-sky-300/10 px-3 py-2 text-sm font-semibold text-sky-100 shadow-lg shadow-sky-500/10">
-          <span className="size-2 rounded-full bg-green-400 shadow-[0_0_16px_rgba(74,222,128,0.9)]" />
-          Available for web and UI projects
+        <div className="mb-5 inline-flex flex-col items-start gap-2">
+          <div className="inline-flex items-center gap-2 rounded-md border border-sky-300/25 bg-sky-300/10 px-3 py-2 text-sm font-semibold text-sky-100 shadow-lg shadow-sky-500/10">
+            <span className="size-2 rounded-full bg-green-400 shadow-[0_0_16px_rgba(74,222,128,0.9)]" />
+            Available for web and UI projects
+          </div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+            {viewCount.toLocaleString()} portfolio views
+          </p>
         </div>
         <h1 className="max-w-3xl text-4xl font-black leading-tight text-white drop-shadow-2xl sm:text-5xl lg:text-6xl">
           Hi, I&apos;m Nyan Tun Zaw. I build{" "}
